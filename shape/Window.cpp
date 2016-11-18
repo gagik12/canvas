@@ -30,7 +30,6 @@ void CWindow::OnDrawWindow(std::vector<std::shared_ptr<IShape>> const& shapes, c
 {
     SetupView(size);
     m_canvas.DrawShapes(shapes);
-    glColor3f(1, 0, 0);
 }
 
 void CWindow::SetupView(const glm::ivec2 & size)

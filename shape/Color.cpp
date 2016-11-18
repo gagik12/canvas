@@ -13,9 +13,9 @@ bool ConvertHexInRGBColor(std::string const& hexColor, Color & rgbColor)
     {
         try
         {
-            rgbColor.red = std::stoi(hexColor.substr(1, 2), 0, 16);
-            rgbColor.green = std::stoi(hexColor.substr(3, 2), 0, 16);
-            rgbColor.blue = std::stoi(hexColor.substr(5, 2), 0, 16);
+            rgbColor.red = (1.f / 255) * std::stoi(hexColor.substr(1, 2), 0, 16);
+            rgbColor.green = (1.f / 255) * std::stoi(hexColor.substr(3, 2), 0, 16);
+            rgbColor.blue = (1.f / 255) * std::stoi(hexColor.substr(5, 2), 0, 16);
         }
         catch (std::exception const& e)
         {

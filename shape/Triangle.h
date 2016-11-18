@@ -1,18 +1,19 @@
 #pragma once
 #include "Point.h"
 #include "SolidShape.h"
+#include "Color.h"
 
 class CTriangle : public ISolidShape
 {
 public:
-    CTriangle(Point const& firstVertex, Point const& secondVertex, Point const& thirdVertex, std::string const& outlineColor, std::string const& fillColor);
+    CTriangle(Point const& firstVertex, Point const& secondVertex, Point const& thirdVertex, Color const& outlineColor, Color const& fillColor);
     ~CTriangle() = default;
     double GetArea() const override;
     double GetPerimeter() const override;
     double GetSideLength(Point const& firstVertex, Point const& secondVertex) const;
-    std::string GetOutlineColor() const override;
+    Color GetOutlineColor() const override;
 
-    std::string GetFillColor() const override;
+    Color GetFillColor() const override;
 
     Point const& GetVertex1() const;
     Point const& GetVertex2() const;
@@ -23,6 +24,6 @@ protected:
     void AppendProperties(std::ostream & strm) const override;
 private:
     Vertices m_vertices;
-    std::string m_outlineColor;
-    std::string m_fillColor;
+    Color m_outlineColor;
+    Color m_fillColor;
 };

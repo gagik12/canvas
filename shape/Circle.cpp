@@ -3,7 +3,7 @@
 #include "SolidShape.h"
 #include "Point.h"
 
-CCircle::CCircle(Point const& center, double radius, std::string const& outlineColor, std::string const& fillColor)
+CCircle::CCircle(Point const& center, double radius, Color const& outlineColor, Color const& fillColor)
     :ISolidShape("Circle"),
     m_center(center),
     m_radius(radius),
@@ -22,12 +22,12 @@ double CCircle::GetRadius() const
     return m_radius;
 }
 
-std::string CCircle::GetOutlineColor() const
+Color CCircle::GetOutlineColor() const
 {
     return m_outlineColor;
 };
 
-std::string CCircle::GetFillColor() const
+Color CCircle::GetFillColor() const
 {
     return m_fillColor;
 };
@@ -44,12 +44,11 @@ double CCircle::GetPerimeter() const
 
 void CCircle::AppendProperties(std::ostream & strm) const
 {
-    strm << "  Radius = " << m_radius
-        << "  FillColor = " << GetFillColor();
+    strm << "  Radius = " << m_radius;
 }
 
 void CCircle::Draw(ICanvas & canvas) const
 {
-    canvas.DrawCircle(m_center, m_radius, { 100, 100, 100 });
-    canvas.FillCircle(m_center, m_radius, { 100, 100, 100 });
+    canvas.FillCircle(m_center, m_radius, m_fillColor);
+    canvas.DrawCircle(m_center, m_radius, m_outlineColor);
 }

@@ -2,7 +2,7 @@
 #include "LineSegment.h"
 #include "Point.h"
 
-CLineSegment::CLineSegment(Point const& startPoint, Point const& endPoint, std::string const& outlineColor)
+CLineSegment::CLineSegment(Point const& startPoint, Point const& endPoint, Color const& outlineColor)
     :IShape("Line"),
     m_startPoint(startPoint),
     m_endPoint(endPoint),
@@ -15,7 +15,7 @@ double CLineSegment::GetArea() const
     return 0;
 };
 
-std::string CLineSegment::GetOutlineColor() const
+Color CLineSegment::GetOutlineColor() const
 {
     return m_outlineColor;
 };
@@ -43,5 +43,5 @@ void CLineSegment::AppendProperties(std::ostream & strm) const
 
 void CLineSegment::Draw(ICanvas & canvas) const
 {
-    canvas.DrawLine(m_startPoint, m_endPoint, {100, 100, 100});
+    canvas.DrawLine(m_startPoint, m_endPoint, m_outlineColor);
 }

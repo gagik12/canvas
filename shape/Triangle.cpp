@@ -3,7 +3,7 @@
 #include "SolidShape.h"
 #include "Point.h"
 
-CTriangle::CTriangle(Point const& firstVertex, Point const& secondVertex, Point const& thirdVertex, std::string const& outlineColor, std::string const& fillColor)
+CTriangle::CTriangle(Point const& firstVertex, Point const& secondVertex, Point const& thirdVertex, Color const& outlineColor, Color const& fillColor)
     :ISolidShape("Triangle"),
     m_fillColor(fillColor),
     m_outlineColor(outlineColor)
@@ -13,12 +13,12 @@ CTriangle::CTriangle(Point const& firstVertex, Point const& secondVertex, Point 
     m_vertices.push_back(thirdVertex);
 }
 
-std::string CTriangle::GetOutlineColor() const
+Color CTriangle::GetOutlineColor() const
 {
     return m_outlineColor;
 };
 
-std::string CTriangle::GetFillColor() const
+Color CTriangle::GetFillColor() const
 {
     return m_fillColor;
 };
@@ -63,7 +63,6 @@ double CTriangle::GetPerimeter() const
 
 void CTriangle::AppendProperties(std::ostream & strm) const
 {
-    strm << "  FillColor = " << GetFillColor();
 }
 
 void CTriangle::Draw(ICanvas & canvas) const

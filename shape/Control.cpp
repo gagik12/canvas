@@ -103,7 +103,7 @@ bool CRemoteControl::CreateLine(std::istream & args)
     Color outlineColor;
     if (ConvertHexInRGBColor(tokens[4], outlineColor))
     {
-        m_shapes.push_back(std::make_shared<CLineSegment>(CLineSegment(startPoint, endPoint, tokens[4])));
+        m_shapes.push_back(std::make_shared<CLineSegment>(CLineSegment(startPoint, endPoint, outlineColor)));
         return true;
     }
     return false;
@@ -137,7 +137,7 @@ bool CRemoteControl::CreateCircle(std::istream & args)
     Color fillColor;
     if (ConvertHexInRGBColor(tokens[3], outlineColor) && ConvertHexInRGBColor(tokens[4], fillColor))
     {
-        m_shapes.push_back(std::make_shared<CCircle>(CCircle(position, radius, tokens[3], tokens[4])));
+        m_shapes.push_back(std::make_shared<CCircle>(CCircle(position, radius, outlineColor, fillColor)));
         return true;
     }
     return false;
@@ -174,7 +174,7 @@ bool CRemoteControl::CreateRectangle(std::istream & args)
     Color fillColor;
     if (ConvertHexInRGBColor(tokens[4], outlineColor) && ConvertHexInRGBColor(tokens[5], fillColor))
     {
-        m_shapes.push_back(std::make_shared<CRectangle>(CRectangle(position, width, height, tokens[4], tokens[5])));
+        m_shapes.push_back(std::make_shared<CRectangle>(CRectangle(position, width, height, outlineColor, fillColor)));
         return true;
     }
     return false;
@@ -212,7 +212,7 @@ bool CRemoteControl::CreateTriangle(std::istream & args)
     Color fillColor;
     if (ConvertHexInRGBColor(tokens[6], outlineColor) && ConvertHexInRGBColor(tokens[7], fillColor))
     {
-        m_shapes.push_back(std::make_shared<CTriangle>(CTriangle(vertex1, vertex2, vertex3, tokens[6], tokens[7])));
+        m_shapes.push_back(std::make_shared<CTriangle>(CTriangle(vertex1, vertex2, vertex3, outlineColor, fillColor)));
         return true;
     }
     return false;

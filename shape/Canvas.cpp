@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Canvas.h"
 #include "IShape.h"
+#include "const.h"
 
 void CCanvas::DrawShapes(std::vector<std::shared_ptr<IShape>> const& shapes)
 {
@@ -12,7 +13,7 @@ void CCanvas::DrawShapes(std::vector<std::shared_ptr<IShape>> const& shapes)
 
 void CCanvas::DrawLine(Point const& startPoint, Point const& endPoint, Color const& outlineColor)
 {
-    glColor3i(outlineColor.red, outlineColor.blue, outlineColor.green);
+    glColor3f(outlineColor.red, outlineColor.green, outlineColor.blue);
     glBegin(GL_LINES);
         glVertex2f(startPoint.x, startPoint.y);
         glVertex2f(endPoint.x, endPoint.y);
@@ -26,12 +27,11 @@ void CCanvas::FillPolygon(Vertices const& vertices, Color const& fillColor)
 
 void CCanvas::DrawCircle(Point const& center, float radius, Color const& outlineColor)
 {
-    const int lineAmount = 100; 
-    glColor3i(outlineColor.red, outlineColor.blue, outlineColor.green);
+    glColor3f(outlineColor.red, outlineColor.green, outlineColor.blue);
     glBegin(GL_LINE_LOOP);
-        for (int i = 0; i <= lineAmount; i++) 
+        for (int i = 0; i <= LINE_AMOUNT; i++)
         {
-            float angle = 2.0f * 3.1415926f * float(i) / float(lineAmount);
+            float angle = 2.0f * PI * float(i) / float(LINE_AMOUNT);
             glVertex2f(
                 center.x + (radius * cos(angle)),
                 center.y + (radius* sin(angle))
@@ -41,12 +41,11 @@ void CCanvas::DrawCircle(Point const& center, float radius, Color const& outline
 }
 void CCanvas::FillCircle(Point const& center, float radius, Color const& fillColor)
 {
-    const int lineAmount = 100;
     glBegin(GL_TRIANGLE_FAN);
-    for (int i = 0; i <= lineAmount; i++)
+    for (int i = 0; i <= LINE_AMOUNT; i++)
     {
-        glColor3i(fillColor.red, fillColor.blue, fillColor.green);
-        float angle = 2.0f * 3.1415926f * float(i) / float(lineAmount);
+        glColor3f(fillColor.red, fillColor.green, fillColor.blue);
+        float angle = 2.0f * PI * float(i) / float(LINE_AMOUNT);
         glVertex2f(
             center.x + (radius * cos(angle)),
             center.y + (radius* sin(angle))
