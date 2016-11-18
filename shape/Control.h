@@ -12,7 +12,7 @@ class IShape;
 class CRemoteControl : boost::noncopyable
 {
 public:
-    CRemoteControl(std::ifstream & input, std::ostream & output);
+    CRemoteControl(std::ifstream & input, std::ostream & output, std::vector<std::shared_ptr<IShape>> & shapes);
     bool HandleCommand();
     void PrintInfo() const;
 private:
@@ -24,7 +24,7 @@ private:
 private:
     typedef std::map<std::string, std::function<bool(std::istream & args)>> ActionMap;
 
-    std::vector<std::shared_ptr<IShape>> m_shapes;
+    std::vector<std::shared_ptr<IShape>> & m_shapes;
     std::ifstream & m_input;
     std::ostream & m_output;
 

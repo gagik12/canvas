@@ -19,7 +19,9 @@ int main(int argc, char *argv[])
         cout << "Failed to open " << argv[1] << " for writing\n";
         return 1;
     }
-    CRemoteControl control(inputFile, cout);
+    std::vector<std::shared_ptr<IShape>> shapes;
+   // shapes.push_back(std::make_shared<CLineSegment>(CLineSegment({ 10, 100 }, { 200, 400 }, "#FFFFFF")));
+    CRemoteControl control(inputFile, cout, shapes);
     while (!inputFile.eof() && !inputFile.fail())
     {
         if (!control.HandleCommand())
@@ -28,9 +30,6 @@ int main(int argc, char *argv[])
         }
     }
     control.PrintInfo();
-    std::vector<std::shared_ptr<IShape>> shapes;
-    //(Point const& startPosition, Point const& endPosition, std::string const& outlineColor);
-    shapes.push_back(std::make_shared<CLineSegment>(CLineSegment({10, 100}, {200, 400}, "#FFFFFF")));
     CWindow window;
     window.ShowFixedSize({ 1200, 600 });
     window.DoGameLoop(shapes);

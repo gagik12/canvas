@@ -5,8 +5,9 @@
 using namespace std;
 using namespace std::placeholders;
 
-CRemoteControl::CRemoteControl(std::ifstream & input, std::ostream & output)
-    :m_input(input)
+CRemoteControl::CRemoteControl(std::ifstream & input, std::ostream & output, std::vector<std::shared_ptr<IShape>> & shapes)
+    :m_shapes(shapes)
+    , m_input(input)
     , m_output(output)
     , m_actionMap({
         { "line", bind(&CRemoteControl::CreateLine, this, _1) },
