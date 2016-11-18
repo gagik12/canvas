@@ -50,5 +50,6 @@ void CCircle::AppendProperties(std::ostream & strm) const
 
 void CCircle::Draw(ICanvas & canvas) const
 {
-
+    canvas.DrawCircle(m_center, m_radius, { 100, 100, 100 });
+    canvas.FillCircle(m_center, m_radius, { 100, 100, 100 });
 }

@@ -20,7 +20,6 @@ int main(int argc, char *argv[])
         return 1;
     }
     std::vector<std::shared_ptr<IShape>> shapes;
-   // shapes.push_back(std::make_shared<CLineSegment>(CLineSegment({ 10, 100 }, { 200, 400 }, "#FFFFFF")));
     CRemoteControl control(inputFile, cout, shapes);
     while (!inputFile.eof() && !inputFile.fail())
     {
