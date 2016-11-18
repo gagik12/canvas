@@ -25,7 +25,7 @@ void CWindow::OnUpdateWindow(float deltaSeconds)
     SetBackgroundColor(glm::vec4(1.0, 1.0, 1.0, 1.0));
     (void)deltaSeconds;
 }
-#include "Canvas.h"
+
 void CWindow::OnDrawWindow(std::vector<std::shared_ptr<IShape>> const& shapes, const glm::ivec2 & size)
 {
     SetupView(size);
