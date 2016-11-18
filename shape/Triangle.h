@@ -17,6 +17,8 @@ public:
     Point const& GetVertex1() const;
     Point const& GetVertex2() const;
     Point const& GetVertex3() const;
+
+    void Draw(ICanvas & canvas) const override;
 protected:
     void AppendProperties(std::ostream & strm) const override;
 private:

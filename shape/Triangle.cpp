@@ -66,3 +66,7 @@ void CTriangle::AppendProperties(std::ostream & strm) const
     strm << "  FillColor = " << GetFillColor();
 }
 
+void CTriangle::Draw(ICanvas & canvas) const
+{
+
+}

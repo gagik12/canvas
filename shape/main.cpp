@@ -1,5 +1,7 @@
 #include "stdafx.h"
 #include "Control.h"
+#include "Window.h"
+#include "LineSegment.h"
 
 using namespace std;
 
@@ -26,5 +28,12 @@ int main(int argc, char *argv[])
         }
     }
     control.PrintInfo();
+    std::vector<std::shared_ptr<IShape>> shapes;
+    //(Point const& startPosition, Point const& endPosition, std::string const& outlineColor);
+    shapes.push_back(std::make_shared<CLineSegment>(CLineSegment({10, 100}, {200, 400}, "#FFFFFF")));
+    CWindow window;
+    window.ShowFixedSize({ 1200, 600 });
+    window.DoGameLoop(shapes);
+
     return 0;
 }

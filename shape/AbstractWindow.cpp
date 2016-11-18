@@ -6,7 +6,6 @@ namespace
 {
     const char WINDOW_TITLE[] = "Canvas";
 
-    // Èñïîëüçóåì unique_ptr ñ ÿâíî çàäàííîé ôóíêöèåé óäàëåíèÿ âìåñòî delete.
     using SDLWindowPtr = std::unique_ptr<SDL_Window, void(*)(SDL_Window*)>;
     using SDLGLContextPtr = std::unique_ptr<void, void(*)(SDL_GLContext)>;
 
@@ -43,13 +42,9 @@ public:
     void ShowFixedSize(glm::ivec2 const& size)
     {
         m_size = size;
-        // Ñïåöèàëüíîå çíà÷åíèå SDL_WINDOWPOS_CENTERED âìåñòî x è y çàñòàâèò SDL2
-        // ðàçìåñòèòü îêíî â öåíòðå ìîíèòîðà ïî îñÿì x è y.
-        // Äëÿ èñïîëüçîâàíèÿ OpenGL âû ÄÎËÆÍÛ óêàçàòü ôëàã SDL_WINDOW_OPENGL.
         m_pWindow.reset(SDL_CreateWindow(WINDOW_TITLE, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
             size.x, size.y, SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE));
 
-        // Ñîçäà¸ì êîíòåêñò OpenGL, ñâÿçàííûé ñ îêíîì.
         m_pGLContext.reset(SDL_GL_CreateContext(m_pWindow.get()));
         if (!m_pGLContext)
         {
@@ -75,16 +70,12 @@ public:
 
     void Clear()const
     {
-        // Çàëèâêà êàäðà öâåòîì ôîíà ñðåäñòâàìè OpenGL
         glClearColor(m_clearColor.x, m_clearColor.y, m_clearColor.z, m_clearColor.w);
         glClear(GL_COLOR_BUFFER_BIT);
     }
 
     void SwapBuffers()
     {
-        // Âûâîä íàðèñîâàííîãî êàäðà â îêíî íà ýêðàíå.
-        // Ïðè ýòîì ñèñòåìà îòäà¸ò ñòàðûé áóôåð äëÿ ðèñîâàíèÿ íîâîãî êàäðà.
-        // Îáìåí äâóõ áóôåðîâ âìåñòî ñîçäàíèÿ íîâûõ ïîçâîëÿåò íå òðàòèòü ðåñóðñû âïóñòóþ.
         SDL_GL_SwapWindow(m_pWindow.get());
     }
 
@@ -135,7 +126,7 @@ void CAbstractWindow::ShowFixedSize(const glm::ivec2 &size)
     m_pImpl->ShowFixedSize(size);
 }
 
-void CAbstractWindow::DoGameLoop()
+void CAbstractWindow::DoGameLoop(std::vector<std::shared_ptr<IShape>> const& shapes)
 {
     SDL_Event event;
     CChronometer chronometer;
@@ -153,11 +144,10 @@ void CAbstractWindow::DoGameLoop()
         {
             break;
         }
-        // ??????? ?????? ?????, ?????????? ? ????????? ?????, ????? ?????? ?????.
         m_pImpl->Clear();
         const float deltaSeconds = chronometer.GrabDeltaTime();
         OnUpdateWindow(deltaSeconds);
-        OnDrawWindow(m_pImpl->GetWindowSize());
+        OnDrawWindow(shapes, m_pImpl->GetWindowSize());
         m_pImpl->SwapBuffers();
     }
 }

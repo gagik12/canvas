@@ -40,3 +40,8 @@ double CLineSegment::GetPerimeter() const
 void CLineSegment::AppendProperties(std::ostream & strm) const
 {
 }
+
+void CLineSegment::Draw(ICanvas & canvas) const
+{
+    canvas.DrawLine(m_startPoint, m_endPoint, {100, 100, 100});
+}

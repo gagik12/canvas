@@ -13,6 +13,8 @@ public:
     std::string GetFillColor() const override;
     double GetRadius() const;
     Point const& GetCenter() const;
+
+    void Draw(ICanvas & canvas) const override;
 protected:
     void AppendProperties(std::ostream & strm) const override;
 private:

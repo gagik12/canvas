@@ -47,3 +47,8 @@ void CCircle::AppendProperties(std::ostream & strm) const
     strm << "  Radius = " << m_radius
         << "  FillColor = " << GetFillColor();
 }
+
+void CCircle::Draw(ICanvas & canvas) const
+{
+
+}

@@ -198,9 +198,6 @@
     <ClCompile Include="PointTest.cpp" />
     <ClCompile Include="Task1Tests.cpp" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="..\shape\test.bat" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

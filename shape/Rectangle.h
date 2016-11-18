@@ -15,6 +15,8 @@ public:
     Point const& GetRightBottom() const;
     double GetWidth() const;
     double GetHeight() const;
+
+    void Draw(ICanvas & canvas) const override;
 protected:
     void AppendProperties(std::ostream & strm) const override;
 private:

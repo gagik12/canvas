@@ -60,3 +60,8 @@ void CRectangle::AppendProperties(std::ostream & strm) const
         << "  Height = " << m_height
         << "  FillColor = " << GetFillColor();
 }
+
+void CRectangle::Draw(ICanvas & canvas) const
+{
+
+}

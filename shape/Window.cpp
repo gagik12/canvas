@@ -22,18 +22,15 @@ void CWindow::OnWindowEvent(const SDL_Event &event)
 
 void CWindow::OnUpdateWindow(float deltaSeconds)
 {
+    SetBackgroundColor(glm::vec4(1.0, 1.0, 1.0, 1.0));
     (void)deltaSeconds;
 }
-
-void CWindow::OnDrawWindow(const glm::ivec2 & size)
+#include "Canvas.h"
+void CWindow::OnDrawWindow(std::vector<std::shared_ptr<IShape>> const& shapes, const glm::ivec2 & size)
 {
-    //CAbstractWindow::SetBackgroundColor(glm::vec4(1.0, 1.0, 1.0, 1.0));
     SetupView(size);
+    m_canvas.DrawShapes(shapes);
     glColor3f(1, 0, 0);
-    //DrawCoordinateSystem(size);
-    glColor3f(1, 0, 0);
-    //glm::vec2 windowCenter = GetCenterWindow(size);
-    //DrawFunction(windowCenter);
 }
 
 void CWindow::SetupView(const glm::ivec2 & size)
