@@ -23,4 +23,14 @@
 #define _USE_MATH_DEFINES
 #include <math.h>
 #include <fstream>
+
+#include <GL/glew.h>
+#include <GL/gl.h>
+#include <glm/gtc/type_ptr.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <memory>
+#include <boost/noncopyable.hpp>
+#include <SDL_events.h>
+
+#include <chrono>
 // TODO: Установите здесь ссылки на дополнительные заголовки, требующиеся для программы
