@@ -6,7 +6,7 @@
 class CCircle : public ISolidShape
 {
 public:
-    CCircle(Point const& center, double radius, Color const& outlineColor, Color const& fillColor);
+    CCircle(Point const& center, GLfloat radius, Color const& outlineColor, Color const& fillColor);
     ~CCircle() = default;
     double GetArea() const override;
     double GetPerimeter() const override;
@@ -20,7 +20,7 @@ protected:
     void AppendProperties(std::ostream & strm) const override;
 private:
     Point m_center;
-    double m_radius;
+    GLfloat m_radius;
     Color m_outlineColor;
     Color m_fillColor;
 };

@@ -67,5 +67,8 @@ void CTriangle::AppendProperties(std::ostream & strm) const
 
 void CTriangle::Draw(ICanvas & canvas) const
 {
-
+    canvas.DrawLine(m_vertices[0], m_vertices[1], m_outlineColor);
+    canvas.DrawLine(m_vertices[1], m_vertices[2], m_outlineColor);
+    canvas.DrawLine(m_vertices[2], m_vertices[0], m_outlineColor);
+    canvas.FillPolygon(m_vertices, m_fillColor);
 }

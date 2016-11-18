@@ -3,7 +3,7 @@
 #include "SolidShape.h"
 #include "Point.h"
 
-CCircle::CCircle(Point const& center, double radius, Color const& outlineColor, Color const& fillColor)
+CCircle::CCircle(Point const& center, GLfloat radius, Color const& outlineColor, Color const& fillColor)
     :ISolidShape("Circle"),
     m_center(center),
     m_radius(radius),

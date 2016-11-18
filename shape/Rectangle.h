@@ -6,7 +6,7 @@
 class CRectangle : public ISolidShape
 {
 public:
-    CRectangle(Point const& leftTop, double width, double height, Color const& outlineColor, Color const& fillColor);
+    CRectangle(Point const& leftTop, GLfloat width, GLfloat height, Color const& outlineColor, Color const& fillColor);
     ~CRectangle() = default;
     double GetArea() const override;
     double GetPerimeter() const override;
@@ -23,8 +23,8 @@ protected:
 private:
     Point m_leftTop;
     Point m_rightBottom;
-    double m_width;
-    double m_height;
+    GLfloat m_width;
+    GLfloat m_height;
     Color m_outlineColor;
     Color m_fillColor;
 };

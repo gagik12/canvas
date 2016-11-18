@@ -14,15 +14,23 @@ void CCanvas::DrawShapes(std::vector<std::shared_ptr<IShape>> const& shapes)
 void CCanvas::DrawLine(Point const& startPoint, Point const& endPoint, Color const& outlineColor)
 {
     glColor3f(outlineColor.red, outlineColor.green, outlineColor.blue);
+    glEnable(GL_LINE_SMOOTH);
     glBegin(GL_LINES);
         glVertex2f(startPoint.x, startPoint.y);
         glVertex2f(endPoint.x, endPoint.y);
     glEnd();
+    glDisable(GL_LINE_SMOOTH);
 }
 
 void CCanvas::FillPolygon(Vertices const& vertices, Color const& fillColor)
 {
-
+    glBegin(GL_POLYGON);
+    for (int i = 0; i < vertices.size(); i++)
+    {
+        glColor3f(fillColor.red, fillColor.green, fillColor.blue);
+        glVertex2f(vertices[i].x, vertices[i].y);
+    }
+    glEnd();
 }
 
 void CCanvas::DrawCircle(Point const& center, float radius, Color const& outlineColor)

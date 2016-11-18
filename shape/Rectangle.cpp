@@ -2,7 +2,7 @@
 #include "Rectangle.h"
 #include "SolidShape.h"
 #include "Point.h"
-CRectangle::CRectangle(Point const& leftTop, double width, double height, Color const& outlineColor, Color const& fillColor)
+CRectangle::CRectangle(Point const& leftTop, GLfloat width, GLfloat height, Color const& outlineColor, Color const& fillColor)
     :ISolidShape("Rectangle"), 
     m_leftTop(leftTop),
     m_height(height),
@@ -62,5 +62,9 @@ void CRectangle::AppendProperties(std::ostream & strm) const
 
 void CRectangle::Draw(ICanvas & canvas) const
 {
-
+    canvas.DrawLine(m_leftTop, { m_leftTop.x + m_width, m_leftTop.y}, m_outlineColor);
+    canvas.DrawLine({ m_leftTop.x + m_width, m_leftTop.y }, { m_leftTop.x + m_width, m_leftTop.y + m_height}, m_outlineColor);
+    canvas.DrawLine({ m_leftTop.x + m_width, m_leftTop.y + m_height }, { m_leftTop.x, m_leftTop.y + m_height }, m_outlineColor);
+    canvas.DrawLine({ m_leftTop.x, m_leftTop.y + m_height }, m_leftTop, m_outlineColor);
+    //canvas.FillPolygon(m_vertices, m_fillColor);
 }

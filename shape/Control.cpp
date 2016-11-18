@@ -90,10 +90,10 @@ bool CRemoteControl::CreateLine(std::istream & args)
     Point startPoint, endPoint;
     try
     {
-        startPoint.x = boost::lexical_cast<double>(tokens[0]);
-        startPoint.y = boost::lexical_cast<double>(tokens[1]);
-        endPoint.x = boost::lexical_cast<double>(tokens[2]);
-        endPoint.y = boost::lexical_cast<double>(tokens[3]);
+        startPoint.x = boost::lexical_cast<GLfloat>(tokens[0]);
+        startPoint.y = boost::lexical_cast<GLfloat>(tokens[1]);
+        endPoint.x = boost::lexical_cast<GLfloat>(tokens[2]);
+        endPoint.y = boost::lexical_cast<GLfloat>(tokens[3]);
     }
     catch (boost::bad_lexical_cast const& error)
     {
@@ -121,12 +121,12 @@ bool CRemoteControl::CreateCircle(std::istream & args)
         return false;
     }
     Point position;
-    double radius;
+    GLfloat radius;
     try
     {
-        position.x = boost::lexical_cast<double>(tokens[0]);
-        position.y = boost::lexical_cast<double>(tokens[1]);
-        radius = boost::lexical_cast<double>(tokens[2]);
+        position.x = boost::lexical_cast<GLfloat>(tokens[0]);
+        position.y = boost::lexical_cast<GLfloat>(tokens[1]);
+        radius = boost::lexical_cast<GLfloat>(tokens[2]);
     }
     catch (boost::bad_lexical_cast const& error)
     {
@@ -155,14 +155,14 @@ bool CRemoteControl::CreateRectangle(std::istream & args)
         return false;
     }
     Point position;
-    double width;
-    double height;
+    GLfloat width;
+    GLfloat height;
     try
     {
-        position.x = boost::lexical_cast<double>(tokens[0]);
-        position.y = boost::lexical_cast<double>(tokens[1]);
-        width = boost::lexical_cast<double>(tokens[2]);
-        height = boost::lexical_cast<double>(tokens[3]);
+        position.x = boost::lexical_cast<GLfloat>(tokens[0]);
+        position.y = boost::lexical_cast<GLfloat>(tokens[1]);
+        width = boost::lexical_cast<GLfloat>(tokens[2]);
+        height = boost::lexical_cast<GLfloat>(tokens[3]);
     }
     catch (boost::bad_lexical_cast const& error)
     {
@@ -196,12 +196,12 @@ bool CRemoteControl::CreateTriangle(std::istream & args)
     Point vertex3;
     try
     {
-        vertex1.x = boost::lexical_cast<double>(tokens[0]);
-        vertex1.y = boost::lexical_cast<double>(tokens[1]);
-        vertex2.x = boost::lexical_cast<double>(tokens[2]);
-        vertex2.y = boost::lexical_cast<double>(tokens[3]);
-        vertex3.x = boost::lexical_cast<double>(tokens[4]);
-        vertex3.y = boost::lexical_cast<double>(tokens[5]);
+        vertex1.x = boost::lexical_cast<GLfloat>(tokens[0]);
+        vertex1.y = boost::lexical_cast<GLfloat>(tokens[1]);
+        vertex2.x = boost::lexical_cast<GLfloat>(tokens[2]);
+        vertex2.y = boost::lexical_cast<GLfloat>(tokens[3]);
+        vertex3.x = boost::lexical_cast<GLfloat>(tokens[4]);
+        vertex3.y = boost::lexical_cast<GLfloat>(tokens[5]);
     }
     catch (boost::bad_lexical_cast const& error)
     {
