@@ -10,7 +10,7 @@ CLineSegment::CLineSegment(Point const& startPoint, Point const& endPoint, Color
 {
 }
 
-double CLineSegment::GetArea() const
+float CLineSegment::GetArea() const
 {
     return 0;
 };
@@ -30,10 +30,10 @@ Point const& CLineSegment::GetEndPoint() const
     return m_endPoint;
 }
 
-double CLineSegment::GetPerimeter() const
+float CLineSegment::GetPerimeter() const
 {
-    double dx = m_startPoint.x - m_endPoint.x;
-    double dy = m_startPoint.y - m_endPoint.y;
+    float dx = m_startPoint.x - m_endPoint.x;
+    float dy = m_startPoint.y - m_endPoint.y;
     return std::hypot(dx, dy);
 };
 

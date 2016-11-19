@@ -1,8 +1,8 @@
 #pragma once
 struct Point
 {
-    GLfloat x;
-    GLfloat y;
+    float x;
+    float y;
 };
 
 typedef std::vector<Point> Vertices;

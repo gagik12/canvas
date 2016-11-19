@@ -2,8 +2,9 @@
 #include "Circle.h"
 #include "SolidShape.h"
 #include "Point.h"
+#include "const.h"
 
-CCircle::CCircle(Point const& center, GLfloat radius, Color const& outlineColor, Color const& fillColor)
+CCircle::CCircle(Point const& center, float radius, Color const& outlineColor, Color const& fillColor)
     :ISolidShape("Circle"),
     m_center(center),
     m_radius(radius),
@@ -17,7 +18,7 @@ Point const& CCircle::GetCenter() const
     return m_center;
 }
 
-double CCircle::GetRadius() const
+float CCircle::GetRadius() const
 {
     return m_radius;
 }
@@ -32,14 +33,14 @@ Color CCircle::GetFillColor() const
     return m_fillColor;
 };
 
-double CCircle::GetArea() const
+float CCircle::GetArea() const
 {
-    return M_PI * std::pow(m_radius, 2);
+    return PI * std::pow(m_radius, 2);
 };
 
-double CCircle::GetPerimeter() const
+float CCircle::GetPerimeter() const
 {
-    return 2 * M_PI * m_radius;
+    return 2 * PI * m_radius;
 };
 
 void CCircle::AppendProperties(std::ostream & strm) const

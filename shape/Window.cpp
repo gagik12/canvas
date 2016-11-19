@@ -1,11 +1,7 @@
 #include "stdafx.h"
 #include "Window.h"
 
-namespace
-{
 
-
-}
 CWindow::CWindow()
 {
 }
@@ -17,7 +13,6 @@ CWindow::~CWindow()
 
 void CWindow::OnWindowEvent(const SDL_Event &event)
 {
-
 }
 
 void CWindow::OnUpdateWindow(float deltaSeconds)

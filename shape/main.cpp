@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
     }
     control.PrintInfo();
     CWindow window;
-    window.ShowFixedSize({ 1200, 600 });
+    window.ShowFixedSize({ 600, 600 });
     window.DoGameLoop(shapes);
 
     return 0;

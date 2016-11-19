@@ -130,7 +130,6 @@ void CAbstractWindow::DoGameLoop(std::vector<std::shared_ptr<IShape>> const& sha
 {
     SDL_Event event;
     CChronometer chronometer;
-
     while (true)
     {
         while (SDL_PollEvent(&event) != 0)

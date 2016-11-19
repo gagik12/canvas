@@ -6,16 +6,16 @@
 class CRectangle : public ISolidShape
 {
 public:
-    CRectangle(Point const& leftTop, GLfloat width, GLfloat height, Color const& outlineColor, Color const& fillColor);
+    CRectangle(Point const& leftTop, float width, float height, Color const& outlineColor, Color const& fillColor);
     ~CRectangle() = default;
-    double GetArea() const override;
-    double GetPerimeter() const override;
+    float GetArea() const override;
+    float GetPerimeter() const override;
     Color GetOutlineColor() const override;
     Color GetFillColor() const override;
     Point const& GetLeftTop() const;
     Point const& GetRightBottom() const;
-    double GetWidth() const;
-    double GetHeight() const;
+    float GetWidth() const;
+    float GetHeight() const;
 
     void Draw(ICanvas & canvas) const override;
 protected:
@@ -23,8 +23,8 @@ protected:
 private:
     Point m_leftTop;
     Point m_rightBottom;
-    GLfloat m_width;
-    GLfloat m_height;
+    float m_width;
+    float m_height;
     Color m_outlineColor;
     Color m_fillColor;
 };

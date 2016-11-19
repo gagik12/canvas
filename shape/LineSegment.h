@@ -8,8 +8,8 @@ class CLineSegment : public IShape
 public:
     CLineSegment(Point const& startPosition, Point const& endPosition, Color const& outlineColor);
     ~CLineSegment() = default;
-    double GetArea() const override;
-    double GetPerimeter() const override;
+    float GetArea() const override;
+    float GetPerimeter() const override;
     Color GetOutlineColor() const override;
 
     Point const& GetStartPoint() const;

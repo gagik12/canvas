@@ -1,8 +1,8 @@
 #pragma once
 struct Color
 {
-    GLfloat red;
-    GLfloat green;
-    GLfloat blue;
+    float red;
+    float green;
+    float blue;
 };
 bool ConvertHexInRGBColor(std::string const& hexColor, Color & rgbColor);

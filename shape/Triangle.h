@@ -8,9 +8,9 @@ class CTriangle : public ISolidShape
 public:
     CTriangle(Point const& firstVertex, Point const& secondVertex, Point const& thirdVertex, Color const& outlineColor, Color const& fillColor);
     ~CTriangle() = default;
-    double GetArea() const override;
-    double GetPerimeter() const override;
-    double GetSideLength(Point const& firstVertex, Point const& secondVertex) const;
+    float GetArea() const override;
+    float GetPerimeter() const override;
+    float GetSideLength(Point const& firstVertex, Point const& secondVertex) const;
     Color GetOutlineColor() const override;
 
     Color GetFillColor() const override;

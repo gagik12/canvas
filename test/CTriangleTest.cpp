@@ -7,7 +7,7 @@ struct TriangleFixture_
 {
     CTriangle triangle;
     TriangleFixture_()
-        :triangle({ 0, 0 }, { 0, 3 }, { 4, 3 }, "#ff00ff", "#0000ff")
+        :triangle({ 0, 0 }, { 0, 3 }, { 4, 3 }, {100, 100, 20}, {20, 30, 29})
     {}
 };
 
@@ -31,19 +31,10 @@ BOOST_FIXTURE_TEST_SUITE(Triangle, TriangleFixture_)
         IsPointsEqual(triangle.GetVertex3(), { 4, 3 });
     }
 
-    BOOST_AUTO_TEST_CASE(triangle_get_fill_color)
-    {
-        BOOST_CHECK(triangle.GetFillColor() == "#0000ff");
-    }
-
-    BOOST_AUTO_TEST_CASE(triangle_get_outline_color)
-    {
-        BOOST_CHECK(triangle.GetOutlineColor() == "#ff00ff");
-    }
 
     BOOST_AUTO_TEST_CASE(triangle_to_string)
     {
-        BOOST_CHECK(triangle.ToString() == "Triangle:   S = 6  P = 12  ColorOutline = #ff00ff  FillColor = #0000ff");
+        BOOST_CHECK(triangle.ToString() == "Triangle:   S = 6  P = 12");
     }
 
 BOOST_AUTO_TEST_SUITE_END()
