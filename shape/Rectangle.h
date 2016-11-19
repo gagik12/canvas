@@ -12,8 +12,6 @@ public:
     float GetPerimeter() const override;
     Color GetOutlineColor() const override;
     Color GetFillColor() const override;
-    Point const& GetLeftTop() const;
-    Point const& GetRightBottom() const;
     float GetWidth() const;
     float GetHeight() const;
 
@@ -21,10 +19,9 @@ public:
 protected:
     void AppendProperties(std::ostream & strm) const override;
 private:
-    Point m_leftTop;
-    Point m_rightBottom;
     float m_width;
     float m_height;
     Color m_outlineColor;
     Color m_fillColor;
+    Vertices m_vertices;
 };

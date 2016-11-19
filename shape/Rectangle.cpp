@@ -4,13 +4,15 @@
 #include "Point.h"
 CRectangle::CRectangle(Point const& leftTop, float width, float height, Color const& outlineColor, Color const& fillColor)
     :ISolidShape("Rectangle"), 
-    m_leftTop(leftTop),
     m_height(height),
     m_width(width),
     m_fillColor(fillColor),
     m_outlineColor(outlineColor)
 {
-    m_rightBottom = { leftTop.x + width, leftTop.y + height };
+    m_vertices.push_back(leftTop);
+    m_vertices.push_back({ leftTop.x + m_width, leftTop.y });
+    m_vertices.push_back({ leftTop.x + m_width, leftTop.y + m_height });
+    m_vertices.push_back({ leftTop.x, leftTop.y + m_height });
 }
 
 float CRectangle::GetWidth() const
@@ -22,17 +24,6 @@ float CRectangle::GetHeight() const
 {
     return m_height;
 };
-
-
-Point const& CRectangle::GetLeftTop() const
-{
-    return m_leftTop;
-}
-
-Point const& CRectangle::GetRightBottom() const
-{
-    return m_rightBottom;
-}
 
 Color CRectangle::GetOutlineColor() const
 {
@@ -62,9 +53,9 @@ void CRectangle::AppendProperties(std::ostream & strm) const
 
 void CRectangle::Draw(ICanvas & canvas) const
 {
-    canvas.DrawLine(m_leftTop, { m_leftTop.x + m_width, m_leftTop.y}, m_outlineColor);
-    canvas.DrawLine({ m_leftTop.x + m_width, m_leftTop.y }, { m_leftTop.x + m_width, m_leftTop.y + m_height}, m_outlineColor);
-    canvas.DrawLine({ m_leftTop.x + m_width, m_leftTop.y + m_height }, { m_leftTop.x, m_leftTop.y + m_height }, m_outlineColor);
-    canvas.DrawLine({ m_leftTop.x, m_leftTop.y + m_height }, m_leftTop, m_outlineColor);
-    //canvas.FillPolygon(m_vertices, m_fillColor);
+    canvas.DrawLine(m_vertices[0], m_vertices[1], m_outlineColor);
+    canvas.DrawLine(m_vertices[1], m_vertices[2], m_outlineColor);
+    canvas.DrawLine(m_vertices[2], m_vertices[3], m_outlineColor);
+    canvas.DrawLine(m_vertices[3], m_vertices[0], m_outlineColor);
+    canvas.FillPolygon(m_vertices, m_fillColor);
 }
