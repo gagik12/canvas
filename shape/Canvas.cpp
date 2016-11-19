@@ -17,6 +17,10 @@ void CCanvas::DrawLine(Point const& startPoint, Point const& endPoint, Color con
     //glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     //glEnable(GL_LINE_SMOOTH);
     //glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    glEnable(GL_LINE_SMOOTH);
+    glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
     glColor3f(outlineColor.red, outlineColor.green, outlineColor.blue);
     glBegin(GL_LINES);
         glVertex2f(startPoint.x, startPoint.y);
@@ -53,7 +57,6 @@ void CCanvas::DrawCircle(Point const& center, float radius, Color const& outline
         );
     }
     glEnd();
-    //glDisable(GL_LINE_SMOOTH);
 }
 void CCanvas::FillCircle(Point const& center, float radius, Color const& fillColor)
 {
@@ -69,3 +72,8 @@ void CCanvas::FillCircle(Point const& center, float radius, Color const& fillCol
     }
     glEnd();
 }
+
+//glEnable(GL_BLEND);
+//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+//glEnable(GL_LINE_SMOOTH);
+//glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
