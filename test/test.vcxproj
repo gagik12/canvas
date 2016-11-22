@@ -163,6 +163,7 @@
   <ItemGroup>
     <ClInclude Include="..\shape\Circle.h" />
     <ClInclude Include="..\shape\Color.h" />
+    <ClInclude Include="..\shape\const.h" />
     <ClInclude Include="..\shape\Control.h" />
     <ClInclude Include="..\shape\IShape.h" />
     <ClInclude Include="..\shape\LineSegment.h" />
@@ -178,6 +179,7 @@
   <ItemGroup>
     <ClCompile Include="..\shape\Circle.cpp" />
     <ClCompile Include="..\shape\Color.cpp" />
+    <ClCompile Include="..\shape\const.cpp" />
     <ClCompile Include="..\shape\Control.cpp" />
     <ClCompile Include="..\shape\IShape.cpp" />
     <ClCompile Include="..\shape\LineSegment.cpp" />
