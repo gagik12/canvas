@@ -5,18 +5,13 @@
 
 using namespace std;
 
-int main(int argc, char *argv[])
+int main()
 {
-    if (argc != 2)
-    {
-        cout << "Invalid arguments count\n"
-            << "Usage: shape.exe <input file>\n";
-        return 1;
-    }
-    ifstream inputFile(argv[1]);
+    std::string fileName = "input/canvas.txt";
+    ifstream inputFile(fileName);
     if (!inputFile.is_open())
     {
-        cout << "Failed to open " << argv[1] << " for writing\n";
+        cout << "Failed to open " << fileName << " for writing\n";
         return 1;
     }
     std::vector<std::shared_ptr<IShape>> shapes;
